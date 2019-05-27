@@ -16,6 +16,7 @@ public class Instructor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     private int id;
 
     @Column(name = "first_name")
