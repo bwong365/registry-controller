@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Repository
 @CrossOrigin(allowCredentials = "true")
-public interface InstructorRepository extends JpaRepository<Instructor, Integer> {
+public interface InstructorRepository extends JpaRepository<Instructor, Long> {
 
 }

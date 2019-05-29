@@ -17,7 +17,7 @@ public class Instructor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    private int id;
+    private Long id;
 
     @Column(name = "first_name")
     @NonNull
@@ -29,4 +29,6 @@ public class Instructor {
 
     @OneToMany(mappedBy = "instructor")
     private Set<Course> courses;
+
+
 }
