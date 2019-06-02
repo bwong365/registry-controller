@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "student")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Student {
 
     @Id
@@ -31,6 +30,9 @@ public class Student {
         joinColumns = { @JoinColumn(name = "student_id") },
         inverseJoinColumns = { @JoinColumn(name = "course_id") }
     )
+    @JsonIgnoreProperties(value = {
+            "students"
+    })
     private Set<Course> courses;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student", fetch = FetchType.LAZY)

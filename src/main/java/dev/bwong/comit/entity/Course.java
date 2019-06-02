@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "course")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Course {
 
     @Id
@@ -39,6 +38,9 @@ public class Course {
         inverseJoinColumns = { @JoinColumn(name = "student_id") }
     )
     @JsonBackReference
+    @JsonIgnoreProperties(value = {
+            "courses"
+    })
     private Set<Student> students;
 
     @OneToMany(cascade = {
@@ -47,6 +49,9 @@ public class Course {
             CascadeType.PERSIST,
             CascadeType.REFRESH
     }, mappedBy = "course")
+    @JsonIgnoreProperties(value = {
+            "course"
+    })
     private Set<Exam> exams;
 
     public Course() {

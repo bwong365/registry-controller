@@ -20,6 +20,9 @@ public class Exam {
             CascadeType.REFRESH
     })
     @JoinColumn(name = "student_id")
+    @JsonIgnoreProperties(value = {
+            "courses"
+    })
     private Student student;
 
     @ManyToOne(cascade = {
@@ -29,6 +32,11 @@ public class Exam {
             CascadeType.REFRESH
     })
     @JoinColumn(name = "course_id")
+    @JsonIgnoreProperties(value = {
+            "exams",
+            "instructor",
+            "description"
+    })
     private Course course;
 
     public Exam() {

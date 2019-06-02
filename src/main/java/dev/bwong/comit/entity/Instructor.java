@@ -1,6 +1,7 @@
 package dev.bwong.comit.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -8,7 +9,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "instructor")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Instructor {
 
     @Id
@@ -22,6 +22,9 @@ public class Instructor {
     private String lastName;
 
     @OneToMany(mappedBy = "instructor")
+    @JsonIgnoreProperties(value = {
+            "exams"
+    })
     private Set<Course> courses;
 
     public Instructor() {
